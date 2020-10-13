@@ -1,0 +1,2 @@
+[dev]
+100-dev ansible_host=192.168.15.127
