@@ -24,7 +24,7 @@ PS: as you see no reboots needed :)
 ### todo:
 1. update services list
 1. I think they did a migration before with no quotas because there are users with no quotas set. should we contact Franco Tauceri or Andrea Saccavini to ask?
-
+1. create a checklist, to make sure .100 works perfectly
 
 ### issues:
 1. we have 300Gb of data. I am afraid of ansible timeout while the data syncs, It should't but possible. 90%
