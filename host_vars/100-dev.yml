@@ -10,7 +10,7 @@ migration_dest:
   mount_opts: "defaults,uquota,gquota"
 
 migration_src:
-  synchronize_src: "/home/"
+  synchronize_src: "/home/*"
   mount_path: "/home"
   new_mount_path: "/home_orig"
   mount_src: "/dev/mapper/centos-home"
