@@ -24,5 +24,5 @@
     path: "{{migration_src.new_mount_path}}"
     src: "{{migration_src.mount_src}}"
     fstype: "{{migration_src.mount_fstype}}"
-    opts: "{{migration_src.mount_opts}}"
+    opts: "ro,{{migration_src.mount_opts}}"
     state: mounted
