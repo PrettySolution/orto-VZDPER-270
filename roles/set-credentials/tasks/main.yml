@@ -1,6 +1,6 @@
 ---
 - name: Set authorized key taken from root
-  ansible.posix.authorized_key:
+  authorized_key:
     user: root
     state: present
     key: "{{ credentials.root_id_rsa_pub }}"
