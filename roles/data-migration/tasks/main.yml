@@ -4,5 +4,5 @@
   synchronize:
     src: "{{ migration_src.synchronize_src }}"
     dest: "{{ migration_dest.synchronize_src }}"
-    compress: no
+#    compress: no
   delegate_to: "{{ inventory_hostname }}"
