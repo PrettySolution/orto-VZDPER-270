@@ -1,0 +1,6 @@
+---
+- name: Start services in service_list var
+  service:
+    name: "{{item}}"
+    state: started
+  loop: "{{services_list}}"

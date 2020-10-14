@@ -22,4 +22,4 @@ passwords_sha_512: # use mkpasswd --method=sha-512
   root_password: $6$sshdg2qSgjdK43gj$kS8tV8DXRriDCLAJneIYZsyFpaL6X.klZahDJRUcDFtkMYvnhTP2Tg1zdKQes..4UTSDM/5pBLkLCJml5OgoI1
 
 # before umounting /home all DA + related services needs to be stopped
-services_list: [""]
+services_list: ["httpd"]
