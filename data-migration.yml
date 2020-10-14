@@ -2,8 +2,8 @@
 - name: data-migration
   hosts: "{{ list_of_hosts|default('all') }}"
   become: yes
-#  collections:
-#    - ansible.posix
+  collections:
+    - ansible.posix
 
   roles:
     - data-migration
