@@ -26,5 +26,5 @@ services_list: ["httpd"] #example: ["httpd", "one", "two"]
 
 remote_sudo_user: dmx # check if it works for AWX, It shouldn't
 
-packages: ["rsync","httpd"] # add sshpass if needed
+packages: ["rsync"] # add sshpass if needed
 

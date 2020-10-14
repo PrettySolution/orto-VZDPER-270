@@ -22,10 +22,11 @@ Plan for migration:
 PS: as you see no reboots needed :)
 
 ### todo:
-1. ask Franco Tauceri or Andrea Saccavini if they have quotas database or something extracted as JSON data
+1. ask Franco Tauceri or Andrea Saccavini if they have quotas database or something extracted as JSON data. I need quota as JSON file
+1. ask Franco Tauceri or Andrea Saccavini what kind of issues did they have after their previous migration
 1. update services list
 1. I think they did a migration before with no quotas because there are users with no quotas set. should we contact Franco Tauceri or Andrea Saccavini to ask?
-1. create a checklist, to make sure .100 works perfectly
+1. create a checklist, to make sure .100 works perfectly. This is not enough https://monitor.ortoscale.com/d/1BTofugGk/ortoscale-monitor-monitoring-system-persolvo-d-o-o?orgId=4&refresh=1m
 
 ### issues:
 1. we have 300Gb of data. I am afraid of ansible timeout while the data syncs, It should't but possible. 90%
