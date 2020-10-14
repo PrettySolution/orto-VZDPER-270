@@ -1,0 +1,7 @@
+---
+- name: test Connection to my servers as root
+  hosts: "{{ list_of_hosts|default('all') }}"
+  remote_user: root
+
+  roles:
+    - ping-pong
