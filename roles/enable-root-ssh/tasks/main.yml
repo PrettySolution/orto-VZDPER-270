@@ -11,4 +11,4 @@
   user:
     name: root
     # Ortoscale21!
-    password: "{{passwords_sha_512.root_password}}"
+    password: "{{credentials.root_password}}"
