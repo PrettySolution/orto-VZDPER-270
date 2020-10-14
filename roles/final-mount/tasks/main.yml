@@ -9,7 +9,7 @@
   mount:
     path: "{{migration_dest.mount_path}}"
     src: "/dev/{{migration_dest.vg_name}}/{{migration_dest.lv_name}}"
-    state: unmounted
+    state: absent
 
 - name: Mount migration_dest new mount path
   mount:

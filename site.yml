@@ -36,7 +36,7 @@
     - stop-services
 
 
-- name: umnount home and mound with ro option
+- name: umnount home and mount with ro option
   hosts: "{{ list_of_hosts|default('all') }}"
   remote_user: root
   roles:
