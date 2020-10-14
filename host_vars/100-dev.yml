@@ -1,8 +1,8 @@
 migration_dest:
   name: "/dev/sdb" # device to create new partiotion
   number: "1" # number of new partition
-  vg_name: "vg-home"
-  lv_name: "lv-home-data"
+  vg_name: "vg-data"
+  lv_name: "lv-data"
   mount_path: "/new_home"
   synchronize_src: "/new_home/"
   new_mount_path: "/home"
