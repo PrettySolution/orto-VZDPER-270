@@ -1,0 +1,13 @@
+---
+- name: Set PermitRootLogin without-password
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^PermitRootLogin '
+    insertafter: '^#PermitRootLogin '
+    line: PermitRootLogin without-password
+  notify: Restart service sshd
+
+- name: Undo root password
+  user:
+    name: root
+    password: '*'

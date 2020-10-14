@@ -1,0 +1,14 @@
+---
+- name: Set PermitRootLogin yes
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^PermitRootLogin '
+    insertafter: '^#PermitRootLogin '
+    line: PermitRootLogin yes
+  notify: Restart service sshd
+
+- name: Set root password
+  user:
+    name: root
+    # Ortoscale21!
+    password: "{{passwords_sha_512.root_password}}"

@@ -1,0 +1,28 @@
+---
+- name: Unmount migration_src mount path
+  mount:
+    path: "{{migration_src.mount_path}}"
+    src: "{{migration_src.mount_src}}"
+    state: unmounted
+
+- name: Unmount migration_dest mount path
+  mount:
+    path: "{{migration_dest.mount_path}}"
+    src: "/dev/{{migration_dest.vg_name}}/{{migration_dest.lv_name}}"
+    state: unmounted
+
+- name: Mount migration_dest new mount path
+  mount:
+    path: "{{migration_dest.new_mount_path}}"
+    src: "/dev/{{migration_dest.vg_name}}/{{migration_dest.lv_name}}"
+    fstype: "{{migration_dest.mount_fstype}}"
+    opts: "{{migration_dest.mount_opts}}"
+    state: mounted
+
+- name: Mount migration_src new mount path
+  mount:
+    path: "{{migration_src.new_mount_path}}"
+    src: "{{migration_src.mount_src}}"
+    fstype: "{{migration_src.mount_fstype}}"
+    opts: "{{migration_src.mount_opts}}"
+    state: mounted

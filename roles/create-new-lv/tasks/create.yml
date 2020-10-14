@@ -1,0 +1,41 @@
+---
+# Create a new primary partition
+- parted:
+    device: "{{migration_dest.name}}"
+    number: "{{migration_dest.number}}"
+    state: present
+
+# Setup LVM partition
+
+- name: storage | create logical volume
+  lvg:
+    force: no # If yes, allows to remove volume group with logical volumes.
+#    pvresize: no # ERROR If yes, resize the physical volume to the maximum available size.
+    vg: "{{ migration_dest.vg_name }}" # The name of the volume group.
+    pvs: "{{ migration_dest.name }}{{migration_dest.number}}" # List of comma-separated devices to use as physical devices in this volume group.
+    state: present
+
+
+- name: storage | create logical volume
+  lvol:
+    vg: "{{ migration_dest.vg_name }}"
+    lv: "{{migration_dest.lv_name}}"
+    size: "{{ lvm_lvsize | default('+100%FREE') }}"
+    shrink: "{{ lvm_shrink | default(True) }}"
+    opts: "{{ lvm_lvopts | default(None) }}"
+
+- name: storage | filesystem
+  filesystem:
+    fstype: "{{migration_dest.mount_fstype}}"
+    dev: "/dev/{{ migration_dest.vg_name}}/{{ migration_dest.lv_name }}"
+    resizefs: yes
+
+- name: storage | mount
+  mount:
+    path: "{{migration_dest.mount_path}}"
+    src: "/dev/{{ migration_dest.vg_name}}/{{ migration_dest.lv_name }}"
+    dump: "0"
+    opts: "defaults,uquota,gquota"
+    passno: "0"
+    fstype: "{{migration_dest.mount_fstype}}"
+    state: mounted

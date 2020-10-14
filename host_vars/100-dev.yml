@@ -1,0 +1,25 @@
+migration_dest:
+  name: "/dev/sdb" # device to create new partiotion
+  number: "1" # number of new partition
+  vg_name: "vg-home"
+  lv_name: "lv-home-data"
+  mount_path: "/new_home"
+  synchronize_src: "/new_home/"
+  new_mount_path: "/home"
+  mount_fstype: "xfs"
+  mount_opts: "defaults,uquota,gquota"
+
+migration_src:
+  synchronize_src: "/home/"
+  mount_path: "/home"
+  new_mount_path: "/home_orig"
+  mount_src: "/dev/mapper/centos-home"
+  mount_fstype: "xfs"
+  mount_opts: "defaults,uquota,gquota"
+
+passwords_sha_512: # use mkpasswd --method=sha-512
+  # Ortoscale21!
+  root_password: $6$sshdg2qSgjdK43gj$kS8tV8DXRriDCLAJneIYZsyFpaL6X.klZahDJRUcDFtkMYvnhTP2Tg1zdKQes..4UTSDM/5pBLkLCJml5OgoI1
+
+# before umounting /home all DA + related services needs to be stopped
+services_list: [""]

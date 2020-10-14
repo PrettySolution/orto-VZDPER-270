@@ -1,2 +1,2 @@
 [default]
-100-dev ansible_host=192.168.15.127 ansible_user=dmx
+100-dev ansible_host=192.168.15.127

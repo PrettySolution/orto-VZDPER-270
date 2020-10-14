@@ -1,0 +1,13 @@
+---
+- name: command
+  command: "xfs_quota -x -c 'report -h /home'"
+  register: result_out
+
+- debug:
+    msg: "{{result_out.stdout_lines}}"
+
+- name: generate json
+  template:
+    src: render.j2
+    dest: "quotas.json"
+  delegate_to: localhost

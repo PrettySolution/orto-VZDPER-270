@@ -1,0 +1,14 @@
+{% set to_render = result_out.stdout_lines %}
+{% set quotas = [] %}
+{% set uquotas = [] %}
+{% set gquotas = [] %}
+{% set control = true %}
+
+{% for line in to_render %}
+    {% if line == "" %}{% set control = false %}{% endif %}
+    {% if control %}{{ quotas.append(line) }}{% endif %}
+{% endfor %}
+
+{% set q_length = quotas.count %}
+
+{{ quotas|batch(q_length)|tojson(indent=2) }}

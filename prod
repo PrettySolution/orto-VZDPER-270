@@ -1,2 +1,2 @@
-[зкщв]
-100-dev ansible_host=92.60.67.100
+[prod]
+100-prod ansible_host=92.60.67.100

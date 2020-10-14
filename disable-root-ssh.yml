@@ -1,8 +1,8 @@
 ---
-- name: test Connection to my servers
+- name: disable-root-ssh
   hosts: "{{ list_of_hosts|default('all') }}"
   become: yes
-  remote_user: dmx
 
   roles:
-    - ping-pong
+    - disable-root-ssh
+...

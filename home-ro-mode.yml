@@ -1,8 +1,7 @@
 ---
-- name: test Connection to my servers
+- name: umnount home and mound with ro option
   hosts: "{{ list_of_hosts|default('all') }}"
   become: yes
-  remote_user: dmx
 
   roles:
-    - ping-pong
+    - home-ro-mode

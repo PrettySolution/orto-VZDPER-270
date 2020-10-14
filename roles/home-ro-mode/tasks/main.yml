@@ -1,0 +1,14 @@
+---
+- name: Unmount migration_src.mount_path as appropriately configured in fstab
+  mount:
+    path: "{{migration_src.mount_path}}"
+    src: "{{migration_src.mount_src}}"
+    state: unmounted
+
+- name: Mount migration_src.mount_path ro mode
+  mount:
+    path: "{{migration_src.mount_path}}"
+    src: "{{migration_src.mount_src}}"
+    fstype: "{{migration_src.mount_fstype}}"
+    opts: "ro,{{migration_src.mount_opts}}"
+    state: mounted

@@ -1,0 +1,23 @@
+---
+# Create a new primary partition
+- parted:
+    device: "{{old_disk.name}}"
+    number: "{{old_disk.number}}"
+    state: present
+
+
+- name: storage | filesystem
+  filesystem:
+    fstype: "xfs"
+    dev: "{{ old_disk.name}}{{ old_disk.number }}"
+    resizefs: yes
+
+- name: storage | mount
+  mount:
+    path: "{{old_disk.mount_path}}"
+    src: "{{ old_disk.name}}{{ old_disk.number }}"
+    dump: "0"
+    opts: "defaults,uquota,gquota"
+    passno: "0"
+    fstype: "xfs"
+    state: mounted
