@@ -1,5 +1,5 @@
 ---
-- name: test Connection to my servers
+- name: Final mount
   hosts: "{{ list_of_hosts|default('all') }}"
   become: yes
 

@@ -7,13 +7,20 @@
     - packages
 
 
-- name: enable-root-ssh
+#- name: enable-root-ssh
+#  hosts: "{{ list_of_hosts|default('all') }}"
+#  become: yes
+#  remote_user: "{{remote_sudo_user}}"
+#  roles:
+#    - enable-root-ssh
+
+- name: set credentials for root
   hosts: "{{ list_of_hosts|default('all') }}"
   become: yes
-  remote_user: "{{remote_sudo_user}}"
+  collections:
+    - ansible.posix
   roles:
-    - enable-root-ssh
-
+    - set-credentials
 
 - name: Create new LV
   hosts: "{{ list_of_hosts|default('all') }}"
@@ -43,7 +50,7 @@
     - data-migration
 
 
-- name: test Connection to my servers
+- name: Final mount
   hosts: "{{ list_of_hosts|default('all') }}"
   remote_user: root
   roles:
@@ -55,9 +62,9 @@
   roles:
     - start-services
 
-- name: disable-root-ssh
-  hosts: "{{ list_of_hosts|default('all') }}"
-  remote_user: root
-
-  roles:
-    - disable-root-ssh
+#- name: disable-root-ssh
+#  hosts: "{{ list_of_hosts|default('all') }}"
+#  remote_user: root
+#
+#  roles:
+#    - disable-root-ssh
