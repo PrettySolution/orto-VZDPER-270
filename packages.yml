@@ -1,0 +1,8 @@
+---
+- name: Install required packages
+  hosts: "{{ list_of_hosts|default('all') }}"
+  become: yes
+  remote_user: "{{remote_sudo_user}}"
+
+  roles:
+    - packages
