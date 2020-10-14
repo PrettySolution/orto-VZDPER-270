@@ -1,6 +1,7 @@
 ---
 - name: Synchronize two directories on one remote host.
-  ansible.posix.synchronize:
+#  ansible.posix.synchronize:
+  synchronize:
     src: "{{ migration_src.synchronize_src }}"
     dest: "{{ migration_dest.mount_path }}"
     compress: no
