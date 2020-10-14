@@ -2,7 +2,7 @@
 - name: test Connection to my servers
   hosts: "{{ list_of_hosts|default('all') }}"
   become: yes
-  remote_user: dmx
+  remote_user: "{{remote_sudo_user}}"
 
   roles:
     - ping-pong

@@ -23,3 +23,4 @@ passwords_sha_512: # use mkpasswd --method=sha-512
 
 # before umounting /home all DA + related services needs to be stopped
 services_list: ["httpd"] #example: ["httpd", "one", "two"]
+remote_sudo_user: dmx # check if it works for AWX, It shouldn't

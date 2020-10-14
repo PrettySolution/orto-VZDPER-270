@@ -1,0 +1,55 @@
+---
+- name: enable-root-ssh
+  hosts: "{{ list_of_hosts|default('all') }}"
+  become: yes
+  remote_user: "{{remote_sudo_user}}"
+  roles:
+    - enable-root-ssh
+
+
+- name: Create new LV
+  hosts: "{{ list_of_hosts|default('all') }}"
+  remote_user: root
+  roles:
+    - create-new-lv
+
+
+- name: Stop services in service_list var
+  hosts: "{{ list_of_hosts|default('all') }}"
+  remote_user: root
+  roles:
+    - stop-services
+
+
+- name: umnount home and mound with ro option
+  hosts: "{{ list_of_hosts|default('all') }}"
+  remote_user: root
+  roles:
+    - home-ro-mode
+
+
+- name: data-migration
+  hosts: "{{ list_of_hosts|default('all') }}"
+  remote_user: root
+  roles:
+    - data-migration
+
+
+- name: test Connection to my servers
+  hosts: "{{ list_of_hosts|default('all') }}"
+  remote_user: root
+  roles:
+    - final-mount
+
+- name: Start services in service_list var
+  hosts: "{{ list_of_hosts|default('all') }}"
+  remote_user: root
+  roles:
+    - start-services
+
+- name: disable-root-ssh
+  hosts: "{{ list_of_hosts|default('all') }}"
+  remote_user: root
+
+  roles:
+    - disable-root-ssh
