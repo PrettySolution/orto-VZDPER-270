@@ -4,7 +4,7 @@ migration_dest:
   vg_name: "vg-home"
   lv_name: "lv-home-data"
   mount_path: "/new_home"
-  synchronize_src: "/new_home/"
+  synchronize_src: "{{migration_dest.mount_path}}/"
   new_mount_path: "/home"
   mount_fstype: "xfs"
   mount_opts: "defaults,uquota,gquota"
