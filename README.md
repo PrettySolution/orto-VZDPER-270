@@ -22,6 +22,7 @@ Plan for migration:
 PS: as you see no reboots needed :)
 
 ### todo:
+1. ask Franco Tauceri or Andrea Saccavini if they have quotas database or something extracted as JSON data
 1. update services list
 1. I think they did a migration before with no quotas because there are users with no quotas set. should we contact Franco Tauceri or Andrea Saccavini to ask?
 1. create a checklist, to make sure .100 works perfectly
