@@ -3,6 +3,6 @@
 #  ansible.posix.synchronize:
   synchronize:
     src: "{{ migration_src.synchronize_src }}"
-    dest: "{{ migration_dest.mount_path }}"
+    dest: "{{ migration_dest.synchronize_src }}"
     compress: no
   delegate_to: "{{ inventory_hostname }}"
