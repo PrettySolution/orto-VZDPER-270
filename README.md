@@ -20,5 +20,6 @@ Plan for migration:
 
 
 ### issues:
+1. we have 300Gb of data. I am afraid of ansible timeout while the data syncs, It should't but possible. 90%
 1. ssh works weird, create jira task (planed)
 1. solve quotas backup/restore plan - ask if this needs to be done. 
