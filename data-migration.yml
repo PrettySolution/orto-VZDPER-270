@@ -3,7 +3,7 @@
   hosts: "{{ list_of_hosts|default('all') }}"
   become: yes
 
-collections:
+  collections:
     - ansible.posix
 
   roles:
