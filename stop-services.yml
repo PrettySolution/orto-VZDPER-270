@@ -2,7 +2,6 @@
 - name: Stop services in service_list var
   hosts: "{{ list_of_hosts|default('all') }}"
   become: yes
-  remote_user: dmx
 
   roles:
     - stop-services
