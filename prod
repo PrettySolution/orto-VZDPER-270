@@ -1,2 +1,2 @@
 [prod]
-100-prod ansible_host=92.60.67.100
+100-prod ansible_host=92.60.67.100 ansible_port=11122
