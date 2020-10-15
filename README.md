@@ -29,4 +29,5 @@ https://www.directadmin.com/features.php?id=529
 1. ssh-copy-id works weird after migration, shouldn't ask password anymore. 192.168.15.127 after home migration
 
 ### Vars
-da_service_list: ["da-popb4smtp","directadmin","dovecot","exim","httpd","mysqld","pure-ftpd", "veeamservice"]
+#da_service_list: ["da-popb4smtp","directadmin","dovecot","exim","httpd","mysqld","pure-ftpd", "veeamservice"]
+da_service_list: ["da-popb4smtp","directadmin","dovecot","exim","httpd","mysqld","pure-ftpd"]
