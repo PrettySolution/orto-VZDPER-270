@@ -14,21 +14,19 @@ Plan for migration:
     * After that we will create Logical volume (lvcreate) for vg-data and name it lv-data.
     * Now we will have a LVM vg-data/lv-data.
 1. Stop services in service_list var (before unmounting home all DA + related services needs to be stopped) (ansible role: stop-services)
+1. Ensure nobody of regular user logged in system run `who`. If you see root you are fine
 1. Umnount /home and mount with ro option - read only (ansible role: home-ro-mode)
 1. migrate data using rsync (ansible role: data-migration)
 1. mount new LV as /home, mount original home as /home_orig, update /etc/fstab (ansible role: final-mount)
 1. Start services in service_list var 
+1. Schedule quotas review run `echo "action=rewrite&value=quota" >> /usr/local/directadmin/data/task.queue` 
+https://www.directadmin.com/features.php?id=529
+1. DO NOT REBOOT
 
-PS: as you see no reboots needed :)
 
-### todo:
-1. ask Franco Tauceri or Andrea Saccavini if they have quotas database or something extracted as JSON data. I need quota as JSON file
-1. ask Franco Tauceri or Andrea Saccavini what kind of issues did they have after their previous migration
-1. update services list
-1. I think they did a migration before with no quotas because there are users with no quotas set. should we contact Franco Tauceri or Andrea Saccavini to ask?
-1. create a checklist, to make sure .100 works perfectly. This is not enough https://monitor.ortoscale.com/d/1BTofugGk/ortoscale-monitor-monitoring-system-persolvo-d-o-o?orgId=4&refresh=1m
 
-### issues:
-1. we have 300Gb of data. I am afraid of ansible timeout while the data syncs, It should't but possible. 90%
-1. ssh works weird, create jira task (planed), shouldn't ask password anymore. 192.168.15.127 after home migration
-1. solve quotas backup/restore plan - ask if this needs to be done. 
+### Side effects:
+1. ssh-copy-id works weird after migration, shouldn't ask password anymore. 192.168.15.127 after home migration
+
+### Vars
+da_service_list: ["da-popb4smtp","directadmin","dovecot","exim","httpd","mysqld","pure-ftpd"]

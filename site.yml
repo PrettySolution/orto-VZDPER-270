@@ -7,13 +7,6 @@
     - packages
 
 
-#- name: enable-root-ssh
-#  hosts: "{{ list_of_hosts|default('all') }}"
-#  become: yes
-#  remote_user: "{{remote_sudo_user}}"
-#  roles:
-#    - enable-root-ssh
-
 - name: set credentials for root
   hosts: "{{ list_of_hosts|default('all') }}"
   become: yes
@@ -62,9 +55,3 @@
   roles:
     - start-services
 
-#- name: disable-root-ssh
-#  hosts: "{{ list_of_hosts|default('all') }}"
-#  remote_user: root
-#
-#  roles:
-#    - disable-root-ssh

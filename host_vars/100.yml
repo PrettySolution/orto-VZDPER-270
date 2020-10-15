@@ -23,7 +23,7 @@ credentials: # use mkpasswd --method=sha-512
   root_id_rsa_pub: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCdluRIDuIPbP0bQUHnXrIMynVePbXLQnSt0nmro7ckR1p66hbCpXq1AIWzci7OvARmud1NkcLNs7rvQhCAwTMXuewOhTwd9GzNWfqkfTC9NmE8rofkhTzLkMF1WmmJ41n//04dYAzjyBS2qDiyo9RxrzFdV9pIw29NWn6e1hIUY/7fV6hzAPKLF2Mozg06BGvwokkjVZtLEG7uFuowFdF0fwFVpL5ZfcsZ4M0k/GJ5y+O8XLttqL7mvJS2/3OQDgyL61zbQQiLe5DNFKSyBhD3aSKH33r20mBSFwyVSaOyH8og4IrmF/ugJzUsdfwhAR9Cz2mtCBtArx0OjIanaS0D root@mgnt"
 # before umounting /home all DA + related services needs to be stopped
 #services_list: ["httpd"] #example: ["httpd", "one", "two"]
-services_list: ["httpd"] #example: ["httpd", "one", "two"]
+services_list: ["exim", "httpd", "icinga2", "mariadb", "veeamservice"] #example: ["httpd", "one", "two"]
 
 remote_sudo_user: dmx # check if it works for AWX, It shouldn't
 
