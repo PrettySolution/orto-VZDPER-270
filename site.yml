@@ -55,3 +55,4 @@
   roles:
     - start-services
 
+# Schedule quotas review run `echo "action=rewrite&value=quota" >> /usr/local/directadmin/data/task.queue`
