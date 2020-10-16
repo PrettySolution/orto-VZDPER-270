@@ -21,14 +21,14 @@
   roles:
     - create-new-lv
 
-
+# not necessary
 - name: Stop services in service_list var
   hosts: "{{ list_of_hosts|default('all') }}"
   remote_user: root
   roles:
     - stop-services
 
-
+# make sure nobody logged in. `who` command.
 - name: umnount home and mount with ro option
   hosts: "{{ list_of_hosts|default('all') }}"
   remote_user: root
@@ -49,6 +49,7 @@
   roles:
     - final-mount
 
+# not necessary
 - name: Start services in service_list var
   hosts: "{{ list_of_hosts|default('all') }}"
   remote_user: root
