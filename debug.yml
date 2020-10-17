@@ -4,5 +4,5 @@
 
   tasks:
     - debug:
-#        msg: "{{ inventory_hostname }}"
-        var: hosts | map('extract', hosts) | flatten | selectattr('hostname', 'defined') | list
+        msg: "{{ inventory_hostname }}"
+#        var: hosts | map('extract', hosts) | flatten | selectattr('hostname', 'defined') | list
