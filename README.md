@@ -13,12 +13,13 @@ Plan for migration:
     * After that we will create volume group (vgcreate) for /dev/sdc1 name it vg-data.
     * After that we will create Logical volume (lvcreate) for vg-data and name it lv-data.
     * Now we will have a LVM vg-data/lv-data.
-1. Stop services in service_list var (before unmounting home all DA + related services needs to be stopped) (ansible role: stop-services)
+    * mount /dev/vg-data/lv-data /new_home
+1. Stop services in service_list var (it doesn't make sense, DA services start by themselves) (ansible role: stop-services)
 1. Ensure nobody of regular user logged in system run `who`. If you see root you are fine
 1. Umnount /home and mount with ro option - read only (ansible role: home-ro-mode)
 1. object by object migration using rsync (ansible role: data-migration-obj-by-obj)
 1. mount new LV as /home, mount original home as /home_orig, update /etc/fstab (ansible role: final-mount)
-1. Start services in service_list var 
+1. Start services in service_list var (it doesn't make sense, DA services start by themselves)
 1. Schedule quotas review run `echo "action=rewrite&value=quota" >> /usr/local/directadmin/data/task.queue` 
 https://www.directadmin.com/features.php?id=529
 1. DO NOT REBOOT
