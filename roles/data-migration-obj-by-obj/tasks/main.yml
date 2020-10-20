@@ -1,0 +1,25 @@
+---
+
+- name: Register list of objects in migration src
+  find:
+    paths: "{{migration_src.synchronize_src}}"
+    recurse: no
+    file_type: any
+  register: m_output
+
+- debug:
+    msg: "{{m_output.files|map(attribute='path')|list}}"
+
+- debug:
+    msg: "{{item|relpath(migration_src.mount_path)}}"
+  loop: "{{m_output.files|map(attribute='path')|list}}"
+
+- name: Synchronize two directories on one remote host.
+#  ansible.posix.synchronize:
+  synchronize:
+    src: "{{ item }}"
+    dest: "{{ migration_dest.synchronize_src }}"
+    compress: no
+    archive: yes
+  delegate_to: "{{ inventory_hostname }}"
+  loop: "{{m_output.files|map(attribute='path')|list}}"
