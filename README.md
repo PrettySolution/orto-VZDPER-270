@@ -16,7 +16,7 @@ Plan for migration:
 1. Stop services in service_list var (before unmounting home all DA + related services needs to be stopped) (ansible role: stop-services)
 1. Ensure nobody of regular user logged in system run `who`. If you see root you are fine
 1. Umnount /home and mount with ro option - read only (ansible role: home-ro-mode)
-1. migrate data using rsync (ansible role: data-migration)
+1. object by object migration using rsync (ansible role: data-migration-obj-by-obj)
 1. mount new LV as /home, mount original home as /home_orig, update /etc/fstab (ansible role: final-mount)
 1. Start services in service_list var 
 1. Schedule quotas review run `echo "action=rewrite&value=quota" >> /usr/local/directadmin/data/task.queue` 
